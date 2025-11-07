@@ -41,3 +41,44 @@ h1, h2, h3, h4, h5, h6 {
 .text-shadow-retro {
   text-shadow: 4px 4px 0px var(--color-crimson-shadow);
 }
+
+
+/* navbar styling */
+
+.navbar-container{
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+}
+
+
+.logo-container{
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container img{
+    width: 200px;
+}
+
+.menu-container{
+    width: 70vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-container ul{
+    width: 70vw;
+    display: flex;
+    justify-content: end;
+    list-style: none;
+    gap: 2rem;
+    padding-right: 4rem;
+}
