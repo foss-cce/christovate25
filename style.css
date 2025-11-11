@@ -92,66 +92,49 @@ body {
 }
 
 .hero-text-container {
-  gap: 6rem;
   display: flex;
   flex-direction: column;
 }
 
+.upper-section{
+  width: 100vw;
+  height: 65vh;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  gap: 2rem
+}
+
+.lower-section{
+  height: 35vh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 2.5rem;
+}
 
 .hero-text {
   color: #fff;
-  font-size: 6rem;
+  font-size: 8rem;
   font-weight: 400;
+  letter-spacing: -0.5rem;
 }
 
 .quote{
     font-size: 20px;
-    margin-top: 20px;
-    margin-left: 10px;
+    margin-top: -40px;
+    margin-left: 20px;
     text-transform: capitalize;
+    font-weight: 300;
+    font-size: 20px;
 }
 
 .hero-subline {
   width: 40rem;
-  font-size: large;
-  word-spacing: 0.1rem;
+  font-size: 18px;
+  font-weight: 200;
+  margin-left: 20px;
 }
 
-@media screen and (max-width: 767px) {
-  .hero-text {
-    font-size: 4rem;
-  }
-}
-
-@media screen and (max-width: 560px) {
-  .hero-text {
-    font-size: 2rem;
-  }
-}
-
-.hero-showcase-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-}
-
-.hero-schowcase {
-  padding: 1rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-direction: row;
-  gap: 0.5rem;
-}
-
-.showcase-logo img {
-  width: 30px;
-}
-
-.showcase-h1 {
-  letter-spacing: 0.05rem;
-}
 
 .btn-53,
 .btn-53 *,
@@ -166,7 +149,7 @@ body {
 .btn-53 {
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: button;
-  background-color: #000;
+  background-color: #bf1828;
   background-image: none;
   color: #fff;
   cursor: pointer;
@@ -176,6 +159,7 @@ body {
   font-size: 100%;
   line-height: 1.5;
   margin: 0;
+  margin-top: -10px;
   margin-left: 10px;
   -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
   padding: 0;
@@ -204,7 +188,7 @@ body {
   display: block;
   font-weight: 600;
   overflow: hidden;
-  padding: .5rem 1.5rem;
+  padding: .5rem 1.1rem;
   position: relative;
   text-transform: uppercase;
 }
@@ -270,23 +254,19 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     flex-direction: column;
     background: #bf1828;
+    padding-right: 2rem;
 }
 
-.explore-text-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
 
 .explore-text{
-    font-size: 10rem;
+    font-size: 9rem;
     color: #fff;
-    font-family: "Antonio", sans-serif;
+    font-weight: 400;
+    /* font-family: "Antonio", sans-serif; */
 }
 
 .explore-text:nth-child(2){
