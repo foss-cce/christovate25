@@ -411,27 +411,15 @@ body::-webkit-scrollbar {
   }
 }
 
+
+
 @media (max-width: 700px) {
   .hero-text {
-    font-size: 5rem;
-    letter-spacing: 0.05rem;
+    font-size: 4rem;
+
   }
   .quote {
     font-size: 17px;
-  }
-
-  .hero-subline {
-    font-size: 15px;
-  }
-}
-
-
-@media (max-width: 600px) {
-  .hero-text {
-    font-size: 4.3rem;
-  }
-  .quote {
-    font-size: 16px;
   }
   .brochure-btn {
     margin-left: -3px;
@@ -439,11 +427,13 @@ body::-webkit-scrollbar {
 
   .hero-subline {
     max-width: 100%;
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 
-@media (max-width: 500px) {
+
+
+@media (max-width: 600px) {
   .hero-section {
     width: 100vw;
     height: 100vh;
@@ -478,23 +468,22 @@ body::-webkit-scrollbar {
 
   .hero-text {
     color: #fff;
-    font-size: 4rem;
+    font-size: 4.3rem;
     font-weight: 400;
   }
 
   .quote {
     font-weight: 300;
-    font-size: 17px;
+    font-size: 16px;
   }
 
   .hero-subline {
     width: 40rem;
-    font-size: 15px;
     font-weight: 200;
+    font-size: 14px;
     text-align: center;
   }
 }
-
 
 @media (max-width: 400px) {
 
@@ -763,7 +752,7 @@ body::-webkit-scrollbar {
   .explore-left img {
     width: 24rem;
     position: absolute;
-    bottom: 30px;
+    bottom: 60px;
   }
 }
 
@@ -779,13 +768,13 @@ body::-webkit-scrollbar {
   }
 
   .explore-text:nth-child(1) {
-    bottom: 70px;
+    bottom: 80px;
   }
   .explore-text:nth-child(2) {
-    bottom: -30px;
+    bottom: -20px;
   }
   .explore-text:nth-child(3) {
-    bottom: -130px;
+    bottom: -120px;
   }
 }
 
