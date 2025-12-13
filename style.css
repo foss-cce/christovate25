@@ -1042,7 +1042,7 @@ body::-webkit-scrollbar {
 }
 
 .about-intro {
-    padding: 80px 0;
+    padding: 60px 0;
     border-bottom: 1px solid rgba(212, 175, 55, 0.15);
     background: linear-gradient(135deg,
             rgba(20, 20, 20, 0.8) 0%,
@@ -1932,9 +1932,109 @@ body::-webkit-scrollbar {
 .hero-buttons {
     display: flex;
     gap: 20px;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    margin-top: 30px;
+    margin-top: 40px;
+    max-width: 800px;
+}
+
+.hero-cta-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 30px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(227, 30, 36, 0.1) 100%);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    min-width: 280px;
+}
+
+.hero-cta-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.hero-cta-card:hover::before {
+    left: 100%;
+}
+
+.hero-cta-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(227, 30, 36, 0.15) 100%);
+}
+
+.cta-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.cta-icon svg {
+    width: 28px;
+    height: 28px;
+    color: #000;
+}
+
+.hero-cta-card:hover .cta-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.cta-content {
+    flex: 1;
+}
+
+.cta-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+}
+
+.cta-subtitle {
+    font-size: 0.9rem;
+    color: #aaa;
+    letter-spacing: 0.5px;
+}
+
+.cta-arrow {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.cta-arrow svg {
+    width: 20px;
+    height: 20px;
+    color: var(--gold);
+}
+
+.hero-cta-card:hover .cta-arrow {
+    opacity: 1;
+    transform: translateX(5px);
 }
 
 /* Shortlist Button for Timeline */
@@ -4544,6 +4644,36 @@ body::-webkit-scrollbar {
 
     .contact-text {
         font-size: 1rem;
+    }
+
+    /* Hero CTA cards mobile */
+    .hero-buttons {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero-cta-card {
+        min-width: 100%;
+        padding: 16px 20px;
+    }
+
+    .cta-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+    }
+
+    .cta-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .cta-title {
+        font-size: 1rem;
+    }
+
+    .cta-subtitle {
+        font-size: 0.8rem;
     }
 }
 

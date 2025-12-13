@@ -5,227 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shortlisted Teams - Christovate 2025</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-red: #E31E24;
-            --gold: #D4AF37;
-            --light-gold: #F4E5B3;
-            --dark-gold: #B8942C;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
-            color: #fff;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            text-decoration: none;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .back-btn:hover {
-            background: rgba(212, 175, 55, 0.2);
-            transform: translateX(-5px);
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            letter-spacing: 4px;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: #ccc;
-            letter-spacing: 2px;
-        }
-
-        .teams-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .team-card {
-            background: linear-gradient(135deg, rgba(30, 30, 30, 0.8) 0%, rgba(20, 20, 20, 0.9) 100%);
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            border-radius: 12px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .team-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                from 0deg,
-                transparent 0deg,
-                rgba(212, 175, 55, 0.2) 90deg,
-                transparent 180deg,
-                rgba(212, 175, 55, 0.2) 270deg,
-                transparent 360deg
-            );
-            animation: rotate 4s linear infinite;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .team-card:hover::before {
-            opacity: 1;
-        }
-
-        .team-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-            border-color: var(--gold);
-        }
-
-        .team-number {
-            font-size: 0.9rem;
-            color: var(--gold);
-            font-weight: 600;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        .team-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .team-info {
-            position: relative;
-            z-index: 1;
-        }
-
-        .team-college {
-            font-size: 0.95rem;
-            color: #aaa;
-            margin-bottom: 10px;
-        }
-
-        .team-members {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .members-title {
-            font-size: 0.85rem;
-            color: var(--gold);
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .member {
-            font-size: 0.9rem;
-            color: #ccc;
-            margin-bottom: 5px;
-            padding-left: 15px;
-            position: relative;
-        }
-
-        .member::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-        }
-
-        .stats {
-            text-align: center;
-            margin: 60px 0 40px;
-            padding: 30px;
-            background: rgba(212, 175, 55, 0.05);
-            border-radius: 12px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .stats-number {
-            font-size: 4rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
-
-        .stats-label {
-            font-size: 1.2rem;
-            color: #ccc;
-            letter-spacing: 2px;
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .teams-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-number {
-                font-size: 3rem;
-            }
-        }
-    </style>
+    <link rel="icon" type="image/x-icon" href="assets/jigsaw.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="shortlisted.css">
 </head>
 
 <body>
@@ -240,24 +22,224 @@
 
         <header>
             <h1>Shortlisted Teams</h1>
-            <p class="subtitle">Christovate 2025 - Phase 3</p>
+            <p class="subtitle">Christovate 2025 - Phase 3: Mentoring & Boot Camp</p>
         </header>
 
         <div class="stats">
-            <div class="stats-number">0</div>
+            <div class="stats-number">13</div>
             <div class="stats-label">Teams Advancing to Mentoring Phase</div>
         </div>
 
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-label">Filter by Platform:</div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Teams</button>
+                <button class="filter-btn" data-filter="Arduino Uno">Arduino Uno</button>
+                <button class="filter-btn" data-filter="ESP32">ESP32</button>
+            </div>
+        </div>
+
         <div class="teams-grid">
-            <!-- Team cards will be displayed here -->
-            <!-- Example team card structure (currently no teams to display) -->
-            <div class="team-card" style="grid-column: 1 / -1; text-align: center; padding: 60px 30px;">
-                <h2 style="color: var(--gold); margin-bottom: 20px; font-size: 2rem;">Coming Soon</h2>
-                <p style="color: #aaa; font-size: 1.1rem;">Shortlisted teams will be announced here after Phase 2 evaluation.</p>
-                <p style="color: #666; margin-top: 15px;">Stay tuned for updates!</p>
+            <!-- Arduino Uno Teams -->
+            <div class="team-card" data-platform="Arduino Uno">
+                <div class="platform-badge arduino">Arduino Uno</div>
+                <h2 class="team-name">Harris Binoj</h2>
+                <div class="project-title">Smart Car Parking System</div>
+                <p class="project-description">An automated parking solution with sensors, RFID, and booking systems to optimize parking slot allocation.</p>
+                <div class="team-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Category:</span>
+                        <span class="detail-value">SDG 11: Sustainable Cities and Communities</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card" data-platform="Arduino Uno">
+                <div class="platform-badge arduino">Arduino Uno</div>
+                <h2 class="team-name">Dhruv Nakshatra</h2>
+                <div class="project-title">Personal Safety Device for Students</div>
+                <p class="project-description">A keychain device combining dog repelling (ultrasonic), environmental sensing, and SOS alerts.</p>
+                <div class="team-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Problem:</span>
+                        <span class="detail-value">Students face stray dogs and safety threats. A keychain is needed</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card" data-platform="Arduino Uno">
+                <div class="platform-badge arduino">Arduino Uno</div>
+                <h2 class="team-name">Infinity Unit</h2>
+                <div class="project-title">Smart Women Safety Street Light</div>
+                <p class="project-description">Brightens when motion is detected & alerts authorities if suspicious activity is observed.</p>
+                <div class="team-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Category:</span>
+                        <span class="detail-value">SDG 11: Sustainable Cities and Communities</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card" data-platform="Arduino Uno">
+                <div class="platform-badge arduino">Arduino Uno</div>
+                <h2 class="team-name">Team Inspire</h2>
+                <div class="project-title">LifeLine</div>
+                <p class="project-description">Line-following hospital delivery robot for medicine transport.</p>
+                <div class="team-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Category:</span>
+                        <span class="detail-value">SDG 3: Good Health and Wellbeing</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card" data-platform="Arduino Uno">
+                <div class="platform-badge arduino">Arduino Uno</div>
+                <h2 class="team-name">GURUKULAM</h2>
+                <div class="project-title">QR-Based Speed Limiter</div>
+                <p class="project-description">Reads QR signs and limits speed accordingly.</p>
+                <div class="team-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Category:</span>
+                        <span class="detail-value">SDG 11: Sustainable Cities and Communities</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card" data-platform="Arduino Uno">
+                <div class="platform-badge arduino">Arduino Uno</div>
+                <h2 class="team-name">Christ Vidhyanikethan</h2>
+                <div class="project-title">Earthquake Safety System</div>
+                <p class="project-description">Detects vibration and triggers alarms/shut-offs.</p>
+                <div class="team-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Category:</span>
+                        <span class="detail-value">SDG 9: Industry, Innovation and Infrastructure</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card" data-platform="Arduino Uno">
+                <div class="platform-badge arduino">Arduino Uno</div>
+                <h2 class="team-name">Smart Management</h2>
+                <div class="project-title">Holographic Safety Shield</div>
+                <p class="project-description">Prevents harassment and accidents through holographic technology.</p>
+                <div class="team-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Category:</span>
+                        <span class="detail-value">SDG 11: Sustainable Cities and Communities</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ESP32 Teams -->
+            <div class="team-card" data-platform="ESP32">
+                <div class="platform-badge esp32">ESP32</div>
+                <h2 class="team-name">B-rain</h2>
+                <div class="project-title">Smart Home Security & Automation</div>
+                <p class="project-description">Face recognition entry & stranger alerts system.</p>
+                <div class="team-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Problem:</span>
+                        <span class="detail-value">Keys are easily lost; a smart face-recognition unlock & alert system</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card" data-platform="ESP32">
+                <div class="platform-badge esp32">ESP32</div>
+                <h2 class="team-name">Ajwinkrishna M.J</h2>
+                <div class="project-title">Smart Classroom Automation</div>
+                <p class="project-description">Uses PIR & LDR for energy saving in classrooms.</p>
+                <div class="team-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Problem:</span>
+                        <span class="detail-value">Lights should turn off automatically when classroom is empty</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card" data-platform="ESP32">
+                <div class="platform-badge esp32">ESP32</div>
+                <h2 class="team-name">DonBosco</h2>
+                <div class="project-title">Smart Helmet</div>
+                <p class="project-description">Ignition lock, alcohol detection, and crash notification system.</p>
+                <div class="team-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Problem:</span>
+                        <span class="detail-value">Prevent drunk driving and ensure emergency alerts for crashes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card" data-platform="ESP32">
+                <div class="platform-badge esp32">ESP32</div>
+                <h2 class="team-name">TechOps</h2>
+                <div class="project-title">Safe Glide</div>
+                <p class="project-description">RFID traffic junction system for ambulance priority.</p>
+                <div class="team-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Category:</span>
+                        <span class="detail-value">SDG 11: Sustainable Cities and Communities</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card" data-platform="ESP32">
+                <div class="platform-badge esp32">ESP32</div>
+                <h2 class="team-name">Metro to Meadow</h2>
+                <div class="project-title">Remote Farm Monitoring IoT</div>
+                <p class="project-description">System for long-distance farm management.</p>
+                <div class="team-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Problem:</span>
+                        <span class="detail-value">City residents want to monitor farm conditions remotely</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card" data-platform="ESP32">
+                <div class="platform-badge esp32">ESP32</div>
+                <h2 class="team-name">INNOVATORS HUB</h2>
+                <div class="project-title">Vehicle-to-Vehicle Alert System</div>
+                <p class="project-description">Emergency vehicle detection and alert system.</p>
+                <div class="team-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Category:</span>
+                        <span class="detail-value">SDG 11: Sustainable Cities and Communities</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const teamCards = document.querySelectorAll('.team-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                // Filter cards
+                teamCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-platform') === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.style.opacity = '1', 10);
+                    } else {
+                        card.style.opacity = '0';
+                        setTimeout(() => card.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
