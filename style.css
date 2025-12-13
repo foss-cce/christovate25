@@ -1042,7 +1042,7 @@ body::-webkit-scrollbar {
 }
 
 .about-intro {
-    padding: 120px 0;
+    padding: 80px 0;
     border-bottom: 1px solid rgba(212, 175, 55, 0.15);
     background: linear-gradient(135deg,
             rgba(20, 20, 20, 0.8) 0%,
@@ -1254,7 +1254,7 @@ body::-webkit-scrollbar {
 }
 
 .mission-section {
-    padding: 120px 0;
+    padding: 80px 0;
     background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -1926,6 +1926,41 @@ body::-webkit-scrollbar {
     color: #e31b23;
     margin-bottom: 12px;
     text-transform: uppercase;
+}
+
+/* Hero Buttons Container */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+/* Shortlist Button for Timeline */
+.shortlist-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.shortlist-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+}
+
+.shortlist-btn .btn-icon {
+    width: 20px;
+    height: 20px;
 }
 
 .contact-list {
@@ -2607,6 +2642,25 @@ body::-webkit-scrollbar {
 /* Third prize styling */
 .third-prize .prize-amount {
     background: linear-gradient(135deg, #CD7F32 0%, #E5A663 50%, #CD7F32 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Fourth prize styling */
+.fourth-prize::before {
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        rgba(169, 169, 169, 0.4) 90deg,
+        transparent 180deg,
+        rgba(169, 169, 169, 0.4) 270deg,
+        transparent 360deg
+    );
+}
+
+.fourth-prize .prize-amount {
+    background: linear-gradient(135deg, #A9A9A9 0%, #C0C0C0 50%, #A9A9A9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
