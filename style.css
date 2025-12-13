@@ -2,6 +2,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap");
 
+@font-face {
+    font-family: "New_Zelek";
+    src: url("https://db.onlinewebfonts.com/t/57b9396a73ed0c1ba99a8d5de566f6de.eot");
+    src: url("https://db.onlinewebfonts.com/t/57b9396a73ed0c1ba99a8d5de566f6de.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/57b9396a73ed0c1ba99a8d5de566f6de.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/57b9396a73ed0c1ba99a8d5de566f6de.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/57b9396a73ed0c1ba99a8d5de566f6de.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/57b9396a73ed0c1ba99a8d5de566f6de.svg#New_Zelek")format("svg");
+}
+
 :root {
     --primary-red: #E31E24;
     --dark-red: #B71C1C;
@@ -305,11 +315,14 @@ body::-webkit-scrollbar {
     font-weight: 400;
     letter-spacing: -0.5rem;
     margin-left: -10px;
+    font-family: "Inter", sans-serif;
 }
 
 .text-gold {
+    font-family: "New_Zelek" !important;
     color: var(--gold);
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    -webkit-text-stroke: 3px var(--primary-red);
+    text-stroke: 3px var(--primary-red);
 }
 
 .quote {
@@ -1444,7 +1457,7 @@ body::-webkit-scrollbar {
     font-weight: 700;
     letter-spacing: 2px;
     margin-bottom: 24px;
-    opacity: 0.4;
+    opacity: 0.75;
     transition: all 0.4s ease;
     background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
     -webkit-background-clip: text;
@@ -1931,110 +1944,125 @@ body::-webkit-scrollbar {
 /* Hero Buttons Container */
 .hero-buttons {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     justify-content: flex-start;
     flex-wrap: wrap;
     margin-top: 40px;
-    max-width: 800px;
+    max-width: 600px;
 }
 
 .hero-cta-card {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 20px;
-    padding: 20px 30px;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(227, 30, 36, 0.1) 100%);
-    border: 2px solid rgba(212, 175, 55, 0.3);
-    border-radius: 12px;
+    gap: 12px;
+    padding: 14px 24px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1.5px solid rgba(212, 175, 55, 0.4);
+    border-radius: 50px;
     text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    flex: 1;
-    min-width: 280px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .hero-cta-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
-    transition: left 0.5s ease;
+    inset: 0;
+    border-radius: 50px;
+    padding: 1.5px;
+    background: linear-gradient(135deg, var(--gold), var(--primary-red));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .hero-cta-card:hover::before {
-    left: 100%;
+    opacity: 1;
 }
 
 .hero-cta-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--gold);
-    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(227, 30, 36, 0.15) 100%);
+    transform: translateY(-3px);
+    border-color: transparent;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25),
+                0 0 40px rgba(212, 175, 55, 0.15);
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .cta-icon {
-    width: 50px;
-    height: 50px;
-    min-width: 50px;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
-    border-radius: 10px;
     transition: all 0.3s ease;
 }
 
 .cta-icon svg {
-    width: 28px;
-    height: 28px;
-    color: #000;
+    width: 20px;
+    height: 20px;
+    color: var(--gold);
+    transition: all 0.3s ease;
 }
 
-.hero-cta-card:hover .cta-icon {
-    transform: scale(1.1) rotate(5deg);
+.hero-cta-card:hover .cta-icon svg {
+    color: var(--light-gold);
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
 }
 
 .cta-content {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .cta-title {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.hero-cta-card:hover .cta-title {
     color: var(--gold);
-    margin-bottom: 4px;
-    letter-spacing: 1px;
 }
 
 .cta-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
+    color: #888;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+}
+
+.hero-cta-card:hover .cta-subtitle {
     color: #aaa;
-    letter-spacing: 0.5px;
 }
 
 .cta-arrow {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.6;
+    opacity: 0.5;
     transition: all 0.3s ease;
 }
 
 .cta-arrow svg {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     color: var(--gold);
 }
 
 .hero-cta-card:hover .cta-arrow {
     opacity: 1;
-    transform: translateX(5px);
+    transform: translateX(3px);
 }
 
 /* Shortlist Button for Timeline */
@@ -3428,7 +3456,7 @@ body::-webkit-scrollbar {
     opacity: 0;
     animation: fadeInTimeline both;
     animation-timeline: view();
-    animation-range: entry 0% cover 40%;
+    animation-range: entry 0% cover 35%;
 }
 
 .timeline-item:last-child {
@@ -3448,11 +3476,11 @@ body::-webkit-scrollbar {
 @keyframes fadeInTimeline {
     from {
         opacity: 0;
-        transform: translateY(50px);
+        transform: translateY(40px) scale(0.95);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -4434,7 +4462,7 @@ body::-webkit-scrollbar {
     font-weight: 700;
     letter-spacing: 2px;
     margin-bottom: 24px;
-    opacity: 0.4;
+    opacity: 0.75;
     transition: all 0.4s ease;
     background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
     -webkit-background-clip: text;
@@ -4649,31 +4677,41 @@ body::-webkit-scrollbar {
     /* Hero CTA cards mobile */
     .hero-buttons {
         justify-content: center;
-        gap: 15px;
+        gap: 12px;
     }
 
     .hero-cta-card {
-        min-width: 100%;
-        padding: 16px 20px;
+        padding: 12px 20px;
+        gap: 10px;
     }
 
     .cta-icon {
-        width: 42px;
-        height: 42px;
-        min-width: 42px;
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
     }
 
     .cta-icon svg {
-        width: 22px;
-        height: 22px;
+        width: 18px;
+        height: 18px;
     }
 
     .cta-title {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .cta-subtitle {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
+    }
+
+    .cta-arrow {
+        width: 16px;
+        height: 16px;
+    }
+
+    .cta-arrow svg {
+        width: 14px;
+        height: 14px;
     }
 }
 
