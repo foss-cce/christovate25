@@ -1,4 +1,6 @@
 const nav = document.querySelector(".nav");
+const toggle = document.querySelector(".nav-toggle");
+const menu = document.querySelector(".nav-menu");
 let open = false;
 
 function setNavHeightVar() {
@@ -32,27 +34,19 @@ window.addEventListener("resize", function () {
 });
 applyScrollState();
 
-// Initialize toggle and menu after DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  const toggle = document.querySelector(".nav-toggle");
-  const menu = document.querySelector(".nav-menu");
+toggle.addEventListener("click", function () {
+  open = !open;
+  menu.classList.toggle("is-open", open);
+  toggle.setAttribute("aria-expanded", String(open));
+});
 
-  if (toggle && menu) {
-    toggle.addEventListener("click", function () {
-      open = !open;
-      menu.classList.toggle("is-open", open);
-      toggle.setAttribute("aria-expanded", String(open));
-    });
-
-    document.addEventListener("click", function (e) {
-      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-        if (open) {
-          open = false;
-          menu.classList.remove("is-open");
-          toggle.setAttribute("aria-expanded", "false");
-        }
-      }
-    });
+document.addEventListener("click", function (e) {
+  if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+    if (open) {
+      open = false;
+      menu.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
   }
 });
 
@@ -437,6 +431,30 @@ document.addEventListener("DOMContentLoaded", () => {
 //     });
 //     gsap.ticker.lagSmoothing(0);
 
+const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+const getNavHeight = () => {
+  const v = getComputedStyle(document.documentElement).getPropertyValue(
+    "--nav-height"
+  );
+  const h = parseFloat(v) || 0;
+  return h;
+};
+navLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    const href = link.getAttribute("href");
+    if (!href || !href.startsWith("#")) return;
+    const target = href;
+    e.preventDefault();
+    const offset = -getNavHeight();
+    lenis.scrollTo(target, { offset });
+    if (open) {
+      open = false;
+      menu.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
+});
+
 //event struture
 
 //     const stickySection = document.querySelector(".steps");
@@ -548,68 +566,36 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   gsap.ticker.lagSmoothing(0);
 
-  // Get menu and toggle elements for smooth scroll
-  const menu = document.querySelector(".nav-menu");
-  const toggle = document.querySelector(".nav-toggle");
-
-  // Navbar smooth scroll links
-  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-  const getNavHeight = () => {
-    const v = getComputedStyle(document.documentElement).getPropertyValue(
-      "--nav-height"
-    );
-    const h = parseFloat(v) || 0;
-    return h;
-  };
-  navLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      const href = link.getAttribute("href");
-      if (!href || !href.startsWith("#")) return;
-      const target = href;
-      e.preventDefault();
-      const offset = -getNavHeight();
-      lenis.scrollTo(target, { offset });
-      if (open && menu && toggle) {
-        open = false;
-        menu.classList.remove("is-open");
-        toggle.setAttribute("aria-expanded", "false");
-      }
-    });
-  });
-
   const stickySection = document.querySelector(".steps");
+  const stickyHeight = window.innerHeight * 5.5;
   const cards = document.querySelectorAll(".card");
   const countContainer = document.querySelector(".count-container");
   const totalCards = cards.length;
 
-  // Only run sticky card animation if the elements exist
-  if (stickySection && cards.length > 0) {
-    const stickyHeight = window.innerHeight * 5.5;
+  ScrollTrigger.create({
+    trigger: stickySection,
+    start: "top top",
+    end: `+=${stickyHeight}px`,
+    pin: true,
+    pinSpacing: true,
+    onUpdate: (self) => {
+      positionCards(self.progress);
+    },
+  });
 
-    ScrollTrigger.create({
-      trigger: stickySection,
-      start: "top top",
-      end: `+=${stickyHeight}px`,
-      pin: true,
-      pinSpacing: true,
-      onUpdate: (self) => {
-        positionCards(self.progress);
-      },
-    });
+  const getRadius = () => {
+    return window.innerWidth < 900
+      ? window.innerWidth * 7.5
+      : window.innerWidth * 2.5;
+  };
 
-    const getRadius = () => {
-      return window.innerWidth < 900
-        ? window.innerWidth * 7.5
-        : window.innerWidth * 2.5;
-    };
+  const arcAngle = Math.PI * 0.4;
+  const startAngle = Math.PI / 2 - arcAngle / 2;
 
-    const arcAngle = Math.PI * 0.4;
-    const startAngle = Math.PI / 2 - arcAngle / 2;
-
-    function positionCards(progress = 0) {
-      const radius = getRadius();
-      const totalTravel = 1 + totalCards / 7.5;
-      const adjustedProgress = (progress * totalTravel - 1) * 0.75;
+  function positionCards(progress = 0) {
+    const radius = getRadius();
+    const totalTravel = 1 + totalCards / 7.5;
+    const adjustedProgress = (progress * totalTravel - 1) * 0.75;
 
     cards.forEach((card, i) => {
       const normalizedProgress = (totalCards - 1 - i) / totalCards;
@@ -629,43 +615,41 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-    positionCards(0);
+  positionCards(0);
 
-    let currentCardIndex = 0;
-    let lastScrollY = 0;
+  let currentCardIndex = 0;
 
-    const options = {
-      root: null,
-      rootMargin: "0% 0%",
-      threshold: 0.25,
-    };
+  const options = {
+    root: null,
+    rootMargin: "0% 0%",
+    threshold: 0.25,
+  };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          lastScrollY = window.scrollY;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        lastScrollY = window.scrollY;
 
-          let cardIndex = Array.from(cards).indexOf(entry.target);
+        let cardIndex = Array.from(cards).indexOf(entry.target);
 
-          currentCardIndex = cardIndex;
+        currentCardIndex = cardIndex;
 
-          const targetY = -currentCardIndex * 150;
-          gsap.to(countContainer, {
-            y: targetY,
-            duration: 0.3,
-            ease: "power1.out",
-            overwrite: true,
-          });
-        }
-      });
-    }, options);
-
-    cards.forEach((card) => {
-      observer.observe(card);
+        const targetY = -currentCardIndex * 150;
+        gsap.to(countContainer, {
+          y: targetY,
+          duration: 0.3,
+          ease: "power1.out",
+          overwrite: true,
+        });
+      }
     });
+  }, options);
 
-    window.addEventListener("resize", () => positionCards(0));
-  } // End of if (stickySection && cards.length > 0)
+  cards.forEach((card) => {
+    observer.observe(card);
+  });
+
+  window.addEventListener("resize", () => positionCards(0));
 });
 
 // domains
@@ -716,3 +700,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
+
+
+// guitar string in the upper side of domain gsap
+
+var path = `M 10 200 Q 700 200 1390 200`
+
+var finalPath = `M 10 200 Q 700 200 1390 200`
+
+var string = document.querySelector('.line-wrapper')
+
+
+
+string.addEventListener("mousemove", (dets) =>{
+  var rect = string.getBoundingClientRect();
+  console.log(dets.y);
+  path = `M 10 200 Q ${dets.x - rect.x} ${dets.y - rect.y} 1390 200`
+  console.log(rect.x, rect.y);
+
+  gsap.to(".line-wrapper svg path", {
+    attr : {d:path},
+    duration: 0.3,
+    ease: "power3.out"
+  })
+})
+
+string.addEventListener("mouseleave", ()=>{
+  gsap.to(".line-wrapper svg path", {
+    attr:{d:finalPath},
+    duration: 1.2,
+    ease: "elastic.out(1,0.2)"
+  })
+})
+
+
+gsap.from(".upper-section", {
+  opacity: 0,
+  y: 50,
+  duration: 1,
+  delay: .3
+})
+gsap.from(".lower-section", {
+  opacity: 0,
+  y: 50,
+  duration: 1,
+  delay: .3
+})

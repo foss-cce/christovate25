@@ -13,8 +13,52 @@
     --dark-gray: #1a1a1a;
 }
 
+
+@font-face {
+    font-family: 'CabinetGrotesk';
+    src: url('./assets/fonts/CabinetGrotesk-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'ClashDisplay';
+    src: url('./assets/fonts/ClashDisplay-Extralight.woff') format('woff');
+    font-weight: 100;
+}
+
+
+@font-face {
+    font-family: 'ClashDisplay';
+    src: url('./assets/fonts/ClashDisplay-Light.woff') format('woff');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'ClashDisplay';
+    src: url('./assets/fonts/ClashDisplay-Regular.woff') format('woff');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'ClashDisplay';
+    src: url('./assets/fonts/ClashDisplay-Medium.woff') format('woff');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'ClashDisplay';
+    src: url('./assets/fonts/ClashDisplay-Semibold.woff') format('woff');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'ClashDisplay';
+    src: url('./assets/fonts/ClashDisplay-Bold.woff') format('woff');
+    font-weight: 600;
+}
+
+
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'ClashDisplay', sans-serif;
     background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
     color: #fff;
     min-height: 100vh;
@@ -43,25 +87,30 @@ body::before {
     z-index: 1;
 }
 
+p{
+    font-family: 'CabinetGrotesk', sans-serif;
+}
+
+
+
 /* Back Button */
 .back-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(227, 30, 36, 0.1) 100%);
-    border: 2px solid rgba(212, 175, 55, 0.4);
-    color: var(--gold);
+    padding: 12px 12px;
+    border: 1px solid transparent;
+    color: white;
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 50%;
     margin-bottom: 40px;
     transition: all 0.3s ease;
     font-weight: 600;
 }
 
 .back-btn:hover {
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(227, 30, 36, 0.2) 100%);
-    border-color: var(--gold);
+    background: rgba(40, 39, 39, 0.455);
+    border: 1px solid rgb(61, 49, 49);
     transform: translateX(-5px);
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
@@ -69,33 +118,19 @@ body::before {
 /* Header */
 header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
 }
 
 h1 {
     font-size: 4rem;
     font-weight: 900;
     letter-spacing: 6px;
-    background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 50%, var(--gold) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     margin-bottom: 20px;
     text-transform: uppercase;
     position: relative;
     display: inline-block;
 }
 
-h1::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
 
 .subtitle {
     font-size: 1.3rem;
@@ -106,37 +141,19 @@ h1::after {
 
 /* Stats Section */
 .stats {
-    text-align: center;
     margin: 60px auto 50px;
     padding: 40px 30px;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(227, 30, 36, 0.05) 100%);
     border-radius: 16px;
-    border: 2px solid rgba(212, 175, 55, 0.3);
     max-width: 600px;
     position: relative;
     overflow: hidden;
-}
-
-.stats::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        rgba(212, 175, 55, 0.1) 90deg,
-        transparent 180deg,
-        rgba(212, 175, 55, 0.1) 270deg,
-        transparent 360deg
-    );
-    animation: rotate 8s linear infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .stats-number {
-    font-size: 5rem;
+    font-size: 7rem;
     font-weight: 900;
     background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 100%);
     -webkit-background-clip: text;
@@ -145,6 +162,7 @@ h1::after {
     margin-bottom: 15px;
     position: relative;
     z-index: 1;
+    margin-right: 1rem;
 }
 
 .stats-label {
@@ -164,7 +182,7 @@ h1::after {
 
 .filter-label {
     font-size: 1.1rem;
-    color: var(--gold);
+    color: #fff;
     margin-bottom: 20px;
     letter-spacing: 2px;
     font-weight: 600;
@@ -179,21 +197,20 @@ h1::after {
 
 .filter-btn {
     padding: 12px 30px;
-    background: rgba(30, 30, 30, 0.8);
-    border: 2px solid rgba(212, 175, 55, 0.3);
-    color: #ccc;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgb(201, 201, 201);
+    color: #000;
     border-radius: 8px;
     cursor: pointer;
     font-size: 0.95rem;
     font-weight: 600;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    font-family: 'Inter', sans-serif;
+    font-family: 'CabinetGrotesk', sans-serif;
+
 }
 
 .filter-btn:hover {
-    border-color: var(--gold);
-    color: var(--gold);
     transform: translateY(-2px);
 }
 
@@ -214,7 +231,7 @@ h1::after {
 
 .team-card {
     background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(20, 20, 20, 0.95) 100%);
-    border: 2px solid rgba(212, 175, 55, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     padding: 30px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -223,40 +240,16 @@ h1::after {
     opacity: 1;
 }
 
-.team-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        rgba(212, 175, 55, 0.15) 90deg,
-        transparent 180deg,
-        rgba(212, 175, 55, 0.15) 270deg,
-        transparent 360deg
-    );
-    animation: rotate 4s linear infinite;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
 
-.team-card:hover::before {
-    opacity: 1;
-}
 
 .team-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
-    border-color: var(--gold);
+    box-shadow: 0 15px 40px rgba(194, 194, 194, 0.3);
 }
 
 /* Platform Badge */
 .platform-badge {
     display: inline-block;
-    padding: 8px 16px;
     border-radius: 6px;
     font-size: 0.85rem;
     font-weight: 700;
@@ -266,23 +259,14 @@ h1::after {
     z-index: 1;
 }
 
-.platform-badge.arduino {
-    background: linear-gradient(135deg, rgba(0, 150, 136, 0.2) 0%, rgba(0, 150, 136, 0.3) 100%);
-    color: #4DB6AC;
-    border: 1px solid rgba(77, 182, 172, 0.5);
-}
-
-.platform-badge.esp32 {
-    background: linear-gradient(135deg, rgba(227, 30, 36, 0.2) 0%, rgba(227, 30, 36, 0.3) 100%);
-    color: #ff6b6b;
-    border: 1px solid rgba(255, 107, 107, 0.5);
-}
-
 /* Team Info */
 .team-name {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--gold);
+    background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 12px;
     position: relative;
     z-index: 1;
@@ -301,7 +285,7 @@ h1::after {
 
 .project-description {
     font-size: 0.95rem;
-    color: #bbb;
+    color: #bbbbbbbe;
     line-height: 1.6;
     margin-bottom: 20px;
     position: relative;
@@ -323,7 +307,7 @@ h1::after {
 
 .detail-label {
     font-size: 0.85rem;
-    color: var(--gold);
+    color: #fff;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -333,7 +317,8 @@ h1::after {
 
 .detail-value {
     font-size: 0.9rem;
-    color: #ccc;
+    color: #bbbbbbbe;
+
     line-height: 1.5;
 }
 
